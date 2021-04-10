@@ -1,0 +1,19 @@
+tell application "System Events"
+ set texttosay to "Sample Text"
+ display dialog "Text to type:" default answer "white: "
+ set texttosay to the text returned of the result
+ repeat
+  activate application "Safari"
+  delay 2
+  repeat 1000 times
+   keystroke texttosay
+   delay 3.5
+   keystroke return
+  end repeat
+  
+  display dialog the "Do you want to quit?" buttons {"Continue", "Quit"} default button 1
+  if the button returned of the result is "Quit" then
+   exit repeat
+  end if
+ end repeat
+end tell
